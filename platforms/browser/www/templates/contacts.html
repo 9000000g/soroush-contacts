@@ -1,0 +1,56 @@
+<nav class="tf-navbar">
+    <section class="icon">
+        <i class="fa fa-users"></i>
+    </section>
+    <section class="title">
+        <h4>دفترتلفن مهنا</h4>
+        <p ng-if="searchText==''">مدیریت دفترتلفن مرکزتماس مهنا</p>
+        <p ng-if="searchText!=''">جست‌وجوی {{searchText}}...</p>
+    </section>
+    <section class="icon button" ng-show="searchText=='' && selectedGroup" ng-click="searchbar =! searchbar">
+        <i class="fa fa-search"></i>
+    </section>
+    <section class="icon button" ng-show="searchText!='' && selectedGroup" ng-click="search('')">
+        <i class="fa fa-close"></i>
+    </section>
+    <section class="icon button" ng-show="searchText==''" ng-click="sidebar = true">
+        <i class="fa fa-navicon"></i>
+    </section>
+</nav>
+<tf-searchbar open="searchbar" search="search($text)" placeholder="جست‌وجو..."></tf-searchbar>
+<tf-sidebar open="sidebar" direction="left">
+    <div class="profile">
+        <i class="fa fa-user"></i><br>
+        <h5> {{ me.username }} </h5>
+    </div>
+    <h5 class="title-sidebar">گروه‌ها:</h5>
+    <ul class="list-group">
+        <li class="list-group-item pointer" ng-repeat="group in groups" tf-go="/group-contacts/{{group.id}}" ng-class="{active: group.id == selectedGroup}">
+            {{group.name}}
+        </li>
+    </ul>
+    <h5 class="title-sidebar">عملیات:</h5>
+    <ul class="list-group">
+        <li class="list-group-item pointer" tf-go="/settings">
+            <i class="fa fa-cog"></i> تنظیمات
+        </li>
+        <li class="list-group-item pointer" tf-go="/login">
+            <i class="fa fa-sign-out"></i> خروج
+        </li>
+    </ul>
+</tf-sidebar>
+
+<div class="tf-container" tf-scroll tf-scroll-down="bars=false" tf-scroll-up="bars=true">
+    <ul class="list-group block pointer contacts" ng-show="displayContacts.length > 0">
+        <li class="list-group-item" ng-repeat="contact in displayContacts" tf-go="/contacts/{{contact.id}}">
+            <i class="fa fa-user"></i> {{contact.name}}
+            <span class="badge" ng-show="contact.vip == 1"> <i class="fa fa-star"></i> </span>
+        </li>
+    </ul>
+    <p class="vertical-padding horizontal-padding" ng-show="displayContacts.length == 0"> هیچ کاربری موجود نیست. </p>
+    <p class="vertical-padding horizontal-padding" ng-if="!selectedGroup"> یکی از گروه‌ها را انتخاب کنید! </p>
+</div>
+
+<tf-floating-btn tf-go="/contacts/new" ng-show="bars">
+    <i class="fa fa-plus"></i>
+</tf-floating-btn>

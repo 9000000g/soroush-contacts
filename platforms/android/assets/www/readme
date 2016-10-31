@@ -1,0 +1,8 @@
+/admin/config.php?naijax=true&function=FUNCTION&parameters[]=PARAM1
+
+
+
+//check password
+/admin/config.php?naijax=true&function=nai_myampusers_checkpw&parameters[]=USERNAME&parameters[]=PASSWORD
+	return true or false
+	

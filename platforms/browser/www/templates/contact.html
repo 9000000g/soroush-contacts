@@ -1,0 +1,66 @@
+<nav class="tf-navbar">
+    <section class="icon">
+        <i class="fa fa-user" ng-if="contact.id"></i>
+        <i class="fa fa-user-plus" ng-if="!contact.id"></i>
+    </section>
+    <section class="title">
+        <h4 ng-if="contact.id"> ویرایش مخاطب </h4>
+        <h4 ng-if="!contact.id"> اضافه کردن مخاطب </h4>
+    </section>
+    <section class="icon button" tf-go="back">
+        <i class="fa fa-arrow-left"></i>
+    </section>
+</nav>
+<div class="tf-container vertical-padding" style="min-height: auto">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label class="control-label">نام مخاطب:</label>
+                <input type="text" class="form-control" ng-model="contact.name" placeholder="نام مخاطب" required/>
+            </div>
+            <div class="form-group col-sm-5">
+                <label class="control-label">گروه مخاطب:</label>
+                <tf-select class="form-control" options="groups" ng-model="contact.group" placeholder="گروه مخاطب"></tf-select>
+            </div>
+            <div class="form-group col-sm-2">
+                <label class="control-label">مخاطب ویژه:</label>
+                <div class="checkbox">
+                    <tf-switch on-value="1" off-value="0" ng-model="contact.vip"></tf-switch>
+                </div>
+            </div>
+        </div>
+        <label class="control-label"> جزئیات: </label>
+        <div class="row" ng-repeat="detail in contact.details">
+            <div class="form-group col-xs-5">
+                <tf-select class="form-control" options="fields" ng-model="detail.type" placeholder="نوع فیلد"></tf-select>
+            </div>
+            <div class="form-group col-xs-5">
+                <input class="form-control" placeholder="مقدار" ng-model="detail.value" />
+            </div>
+            <div class="form-group col-xs-2">
+                <div class="btn btn-warning btn-xs btn-block" ng-click="removeDetail($index)"><i class="fa fa-trash"></i></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-2 col-xs-offset-10">
+                <div class="btn btn-info btn-xs btn-block" ng-click="addDetail()"><i class="fa fa-plus"></i></div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row" ng-if="!contact.id">
+            <div class="form-group col-xs-12">
+                <button class="btn btn-primary btn-lg btn-block" ng-click="submit('add')"><i class="fa fa-user-plus"></i> ثبت </button>
+            </div>
+        </div>
+        <div class="row" ng-if="contact.id">
+            <div class="form-group col-xs-6">
+                <button class="btn btn-primary btn-lg btn-block" ng-click="submit('edit')"><i class="fa fa-user"></i> ثبت </button>
+            </div>
+            <div class="form-group col-xs-6">
+                <button class="btn btn-danger btn-lg btn-block" ng-click="submit('delete')"><i class="fa fa-user-times"></i> حذف </button>
+            </div>
+        </div>
+    </div>
+</div>

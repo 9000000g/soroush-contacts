@@ -1,0 +1,42 @@
+<nav class="tf-navbar">
+    <section class="icon">
+        <i class="fa fa-cog fa-spin"></i>
+    </section>
+    <section class="title">
+        <h4>تنظیمات</h4>
+    </section>
+</nav>
+
+<div class="tf-container vertical-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label">آدرس سرور مرکزتماس:</label>
+                <input type="text" class="form-control ltr" ng-model="inputs.server" placeholder="eg: 192.168.2.22" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label">نام کاربری:</label>
+                <input type="text" class="form-control ltr" ng-model="inputs.username" placeholder="eg: admin" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label">رمز عبور:</label>
+                <input type="text" class="form-control ltr" ng-model="inputs.password" placeholder="*****" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label" ng-click="reloadExtensions()"> <a class="btn btn-xs btn-primary"> <i class="fa fa-refresh"></i></a> داخلی پیش‌فرض: </label>
+                <tf-select options="extensions" class="form-control" ng-model="inputs.extension" placeholder="eg: 110"></tf-select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <button class="btn btn-primary btn-lg btn-block" ng-click="submit()" ng-disabled="busy"><i class="fa fa-check"></i> ثبت </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<nav class="tf-navbar">
+    <section class="icon">
+        <i class="fa fa-sign-in"></i>
+    </section>
+    <section class="title">
+        <h4>ورود به سیستم</h4>
+    </section>
+</nav>
+
+<form class="tf-container vertical-padding" ng-submit="login()">
+    <div class="container-fluid col-sm-8 col-sm-offset-2">
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label">نام کاربری</label>
+                <input type="text" class="form-control" ng-model="inputs.username" placeholder="شماره تلفن خود را وارد کنید." required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label class="control-label">رمز عبور</label>
+                <input type="password" class="form-control" ng-model="inputs.password" placeholder="رمز عبور خود را وارد کنید." required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label class="control-label"> </label>
+                <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="fa fa-sign-in"></i> ورود</button>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label"> </label>
+                <button class="btn btn-default btn-lg btn-block" tf-go="/settings"><i class="fa fa-cog"></i> تنظیمات</button>
+            </div>
+        </div>
+    </div>
+</form>
