@@ -4,6 +4,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-whitelist": "1.3.0"
-};
+}
 // BOTTOM OF METADATA
 });

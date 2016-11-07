@@ -97,6 +97,7 @@ angular.module('app.controllers', [])
         $scope.bars = true;
         $scope.sidebar = false;
         $scope.searchbar = false;
+
         $scope.searchText = '';
         $scope.busy = false;
         $scope.search = function(text) {
@@ -195,6 +196,32 @@ angular.module('app.controllers', [])
             }
         }
 
+        $scope.conferances = [];
+        $scope.addToConferance = function(num){
+            if (!$scope.extension || !num || $scope.busy) {
+                return false;
+            } else {
+                $theFramework.loading(true);
+                $scope.busy = true;
+                $cc.post(':6880/add-to-conferance/' + num, {
+                    username: settings.get('username'),
+                    password: settings.get('password')
+                }).then(function(res, err) {
+                    $scope.conferances.push(num);
+                    $theFramework.loading(false);
+                    $scope.busy = false;
+                    if (res.data === false) {
+                        $theFramework.toast('بروز اشکال در برقراری تماس!');
+                    } else {
+                        $theFramework.toast(res.data);
+                    }
+                }).catch(function() {
+                    $theFramework.loading(false);
+                    $scope.busy = false;
+                    $theFramework.toast('مدت زمان انتظار به پایان رسید.');
+                });
+            }
+        }
     })
     .controller('contact', function($cc, $scope, $rootScope, $theFramework, $routeParams, serverCheck, settings, contact, groups) {
         $scope.fields = [

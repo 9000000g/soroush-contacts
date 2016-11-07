@@ -35,7 +35,7 @@
                 <tf-select class="form-control" options="fields" ng-model="detail.type" placeholder="نوع فیلد"></tf-select>
             </div>
             <div class="form-group col-xs-5">
-                <input class="form-control" placeholder="مقدار" ng-model="detail.value" pattern="[\w\s]{1,}" />
+                <input class="form-control" placeholder="مقدار" ng-model="detail.value" pattern=".{1,}" />
             </div>
             <div class="form-group col-xs-2">
                 <div class="btn btn-danger btn-xs btn-block" ng-click="removeDetail($index)"><i class="fa fa-trash"></i></div>

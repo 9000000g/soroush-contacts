@@ -59,8 +59,12 @@
         <li class="list-group-item" ng-click="deleteContact(hovered)">
             <i class="fa fa-trash"></i> حذف مخاطب
         </li>
+
         <li class="list-group-item" ng-repeat="number in hovered.details" ng-click="makeCall(number.value)" ng-show="number.type == 'mobile' || number.type == 'phone'" ng-if="extension">
             <i class="fa fa-phone"></i> تماس با: <b>{{ number.value }}</b>
+        </li>
+        <li class="list-group-item" ng-repeat="number in hovered.details" ng-click="addToConferance(number.value)" ng-show="number.type == 'mobile' || number.type == 'phone'" ng-if="extension" ng-class="{active: conferances.indexOf(number.value) !== -1}">
+            <i class="fa fa-group"></i> اضافه کردن به کنفرانس: <b>{{ number.value }}</b>
         </li>
     </ul>
 </tf-bottom-sheet>
